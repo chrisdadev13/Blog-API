@@ -28,10 +28,12 @@ class Company extends BaseEntity {
 
   @Column()
   @OneToMany(() => User, (user) => user.email)
+  @JoinColumn()
   members: User[];
 
   @Column()
-  @OneToMany(() => Project, (project) => project)
+  @OneToMany(() => Project, (project) => project.id)
+  @JoinColumn()
   projects: Project[];
 }
 

@@ -6,6 +6,8 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
+  JoinColumn,
+  ManyToMany,
 } from "typeorm";
 import Company from "./company.entity";
 import User from "./user.entity";
@@ -23,7 +25,29 @@ class Project extends BaseEntity {
 
   @Column()
   @ManyToOne(() => User, (user) => user.id)
+  @JoinColumn()
   manager: User;
+
+  @Column()
+  @CreateDateColumn()
+  startDate: Date;
+
+  @Column()
+  @CreateDateColumn()
+  endDate: Date;
+
+  @Column("varchar", { array: true })
+  tags: string[];
+
+  @Column("varchar", { length: 30 })
+  status: string;
+
+  @Column("varchar", { length: 30 })
+  priority: string;
+
+  @Column()
+  @ManyToMany(() => User, (user) => user.id)
+  assignedUsers: string[];
 }
 
 export default Project;

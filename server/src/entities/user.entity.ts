@@ -6,10 +6,12 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToOne,
+  OneToMany,
   JoinTable,
   JoinColumn,
 } from "typeorm";
 import Company from "./company.entity";
+import Project from "./project.entity";
 
 @Entity("users")
 class User extends BaseEntity {
@@ -30,10 +32,15 @@ class User extends BaseEntity {
 
   @Column("varchar")
   @OneToOne(() => Company, (company) => company.id)
+  @JoinColumn()
   company: Company;
 
   @Column("boolean", { default: false })
   role: boolean;
+
+  @Column()
+  @OneToMany(() => Project, (project) => project.id)
+  projects: Project[];
 
   @CreateDateColumn()
   createdAt: Date;
