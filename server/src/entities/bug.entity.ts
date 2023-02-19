@@ -27,6 +27,10 @@ class Bug extends BaseEntity {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
+  @Column()
+  @ManyToOne(() => Project, (project) => project.id)
+  project: Project;
+
   @Column("varchar", { length: 30 })
   title: string;
 
