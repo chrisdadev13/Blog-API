@@ -5,12 +5,14 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToOne,
+  OneToMany,
   ManyToMany,
   JoinTable,
   PrimaryGeneratedColumn,
   JoinColumn,
 } from "typeorm";
 import User from "./user.entity";
+import Project from "./project.entity";
 
 @Entity("companies")
 class Company extends BaseEntity {
@@ -20,12 +22,17 @@ class Company extends BaseEntity {
   @Column("varchar", { length: 30 })
   name: string;
 
-  @OneToOne(() => User)
-  @JoinColumn()
-  admin: User;
+  @Column()
+  @OneToMany(() => User, (user) => user.id)
+  admin: User[];
 
-  @ManyToMany(() => User)
+  @Column()
+  @OneToMany(() => User, (user) => user.email)
   members: User[];
+
+  @Column()
+  @OneToMany(() => Project, (project) => project)
+  projects: Project[];
 }
 
 export default Company;

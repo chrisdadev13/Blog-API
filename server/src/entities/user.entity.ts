@@ -29,8 +29,11 @@ class User extends BaseEntity {
   password: string;
 
   @Column("varchar")
-  @OneToOne(() => Company)
+  @OneToOne(() => Company, (company) => company.id)
   company: Company;
+
+  @Column("boolean", { default: false })
+  role: boolean;
 
   @CreateDateColumn()
   createdAt: Date;
