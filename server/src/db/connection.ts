@@ -1,9 +1,11 @@
 import { DataSource } from "typeorm";
-import { DB } from "./constants";
-import User from "../entities/user.entity";
-import Company from "../entities/company.entity";
+import { DB } from "../utils/constants";
+import User from "./entities/user.entity";
+import Company from "./entities/company.entity";
+import Project from "./entities/project.entity";
+import Bug from "./entities/bug.entity";
 
-export default class Database {
+export default class Connection {
   static async initialize(): Promise<any> {
     const AppDataSource = new DataSource({
       type: "postgres",
