@@ -39,12 +39,6 @@ class Project extends BaseEntity {
   @Column("varchar", { array: true })
   tags: string[];
 
-  @Column("varchar", { length: 30 })
-  status: string;
-
-  @Column("varchar", { length: 30 })
-  priority: string;
-
   @Column()
   @ManyToMany(() => User, (user) => user.id)
   assignedUsers: string[];
