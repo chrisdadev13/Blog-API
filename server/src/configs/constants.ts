@@ -9,3 +9,5 @@ export const DB = {
   USER: process.env.DB_USER,
   PASS: process.env.DB_PASS,
 };
+
+export const PORT = 8000;

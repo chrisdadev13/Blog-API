@@ -1,7 +1,7 @@
 import { DataSource } from "typeorm";
-import { DB } from "../utils/constants";
-import User from "./entities/user.entity";
-import Company from "./entities/company.entity";
+import { DB } from "./constants";
+import User from "../entities/user.entity";
+import Company from "../entities/company.entity";
 
 export default class Connection {
   static async initialize(): Promise<any> {
