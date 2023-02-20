@@ -1,18 +1,21 @@
 import Company from "../entities/company.entity";
 import User from "../entities/user.entity";
-import CompanyValues from "../types/company";
+import RegisterCompanyValues from "../types/company";
 
 export default class CompanyService {
-  static async create(args: CompanyValues) {
+  static async create(args: RegisterCompanyValues) {
     const company = new Company();
+    const creator = User.findOne({ where: { email: args.creator } });
 
     company.name = args.name;
-    company.members = [...company.members, args.creator];
+    company.members = [...company.members, creator as any];
 
     await company.save();
 
-    args.creator.company = company;
-    args.creator.save();
+    await creator.then((user) => {
+      user.company = company;
+      user.save();
+    });
 
     return company;
   }

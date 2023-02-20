@@ -20,8 +20,6 @@ export default class UserService {
 
     await user.save();
 
-    CompanyService.create({ name: args.companyName, creator: user });
-
     return user;
   }
 }
