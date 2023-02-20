@@ -1,6 +1,6 @@
 import User from "../entities/user.entity";
 
-export default interface CompanyValues {
+export default interface RegisterCompanyValues {
   name: string;
-  creator: User;
+  creator: string;
 }
