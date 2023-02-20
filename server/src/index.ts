@@ -5,6 +5,8 @@ import { PORT } from "./configs/constants";
 
 const server = http.createServer(app);
 
+Connection.initialize();
+
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
