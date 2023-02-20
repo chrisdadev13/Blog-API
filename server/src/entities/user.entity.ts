@@ -30,12 +30,13 @@ class User extends BaseEntity {
   @Column("varchar", { length: 30 })
   password: string;
 
-  /*
   @Column("varchar")
   @OneToOne(() => Company, (company) => company.id)
   @JoinColumn()
   company: Company;
 
+  /*
+  
   @Column("boolean", { default: false })
   role: boolean;
 

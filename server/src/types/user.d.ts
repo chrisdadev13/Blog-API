@@ -3,4 +3,5 @@ export default interface RegisterValues {
   lastName: string;
   email: string;
   password: string;
+  companyName: string;
 }

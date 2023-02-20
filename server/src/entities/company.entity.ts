@@ -23,13 +23,9 @@ class Company extends BaseEntity {
   name: string;
 
   @Column("varchar", { array: true })
-  @OneToMany(() => User, (user) => user.id)
-  admin: User[];
-
-  @Column("varchar", { array: true })
   @OneToMany(() => User, (user) => user.email)
   @JoinColumn()
-  members: User[];
+  members: Array<User>;
 
   @Column("varchar", { array: true })
   @OneToMany(() => Project, (project) => project.id)
