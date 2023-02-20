@@ -30,6 +30,7 @@ class User extends BaseEntity {
   @Column("varchar", { length: 30 })
   password: string;
 
+  /*
   @Column("varchar")
   @OneToOne(() => Company, (company) => company.id)
   @JoinColumn()
@@ -38,9 +39,10 @@ class User extends BaseEntity {
   @Column("boolean", { default: false })
   role: boolean;
 
-  @Column()
+  @Column("varchar", { array: true })
   @OneToMany(() => Project, (project) => project.id)
   projects: Project[];
+  */
 
   @CreateDateColumn()
   createdAt: Date;

@@ -22,16 +22,16 @@ class Company extends BaseEntity {
   @Column("varchar", { length: 30 })
   name: string;
 
-  @Column()
+  @Column("varchar", { array: true })
   @OneToMany(() => User, (user) => user.id)
   admin: User[];
 
-  @Column()
+  @Column("varchar", { array: true })
   @OneToMany(() => User, (user) => user.email)
   @JoinColumn()
   members: User[];
 
-  @Column()
+  @Column("varchar", { array: true })
   @OneToMany(() => Project, (project) => project.id)
   @JoinColumn()
   projects: Project[];

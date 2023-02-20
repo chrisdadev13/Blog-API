@@ -39,7 +39,7 @@ class Project extends BaseEntity {
   @Column("varchar", { array: true })
   tags: string[];
 
-  @Column()
+  @Column({ array: true })
   @ManyToMany(() => User, (user) => user.id)
   assignedUsers: string[];
 }
