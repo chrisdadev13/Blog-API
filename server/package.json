@@ -30,7 +30,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node ./dist/index.js",
-    "dev": "tsc -w & nodemon src/index.ts",
+    "dev": "tsc -w & nodemon ./src/index.ts",
     "typeorm": "typeorm-ts-node-commonjs"
   }
 }
