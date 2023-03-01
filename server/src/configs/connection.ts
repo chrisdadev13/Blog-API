@@ -1,6 +1,7 @@
 import { DataSource } from "typeorm";
 import { DB } from "./constants";
-import User from "../modules/users/entities/user.entity";
+import Post from "../entities/post.entity";
+import Comment from "../entities/comment.entity";
 
 export default class Connection {
   static async initialize(): Promise<any> {
@@ -13,7 +14,7 @@ export default class Connection {
       database: DB.NAME,
       synchronize: true,
       logging: true,
-      entities: [User],
+      entities: [Post, Comment],
     });
 
     AppDataSource.initialize()
