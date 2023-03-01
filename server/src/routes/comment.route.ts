@@ -5,4 +5,6 @@ const commentRoutes = Router();
 
 commentRoutes.post("/create", CommentController.create);
 
+commentRoutes.get("/get/:postId", CommentController.get);
+
 export default commentRoutes;

@@ -9,6 +9,12 @@ class CommentController {
 
     res.json(comment);
   }
+  static async get(req: Req, res: Res) {
+    const { postId } = req.params;
+    const comments = await CommentService.get(postId);
+
+    res.json(comments);
+  }
 }
 
 export default CommentController;

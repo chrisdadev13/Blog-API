@@ -1,4 +1,4 @@
-import { FindOneOptions } from "typeorm";
+import { FindOneOptions, FindOperator } from "typeorm";
 import Comment from "../entities/comment.entity";
 import Post from "../entities/post.entity";
 import { BadRequest } from "../utils/errors";
@@ -18,6 +18,15 @@ class CommentService {
     await comment.save();
 
     return { data: comment };
+  }
+
+  static async get(postId: string) {
+    const comments = await Comment.find({ relations: ["post"] });
+    const postComments = comments.filter(
+      (comment) => comment.post.id === postId
+    );
+
+    return { data: postComments };
   }
 }
 
