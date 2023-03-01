@@ -31,6 +31,9 @@ class Post extends BaseEntity {
   @OneToMany(() => Comment, (comment) => comment.post)
   comments: Comment[];
 
+  @Column("varchar", { default: "Chris" })
+  author: string;
+
   @CreateDateColumn()
   createdAt: Date;
 

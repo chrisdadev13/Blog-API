@@ -1,5 +1,6 @@
 import Post from "../entities/post.entity";
 import { BadRequest } from "../utils/errors";
+import { getRepository } from "typeorm";
 
 class PostService {
   static async create(title: string, content: string, tags: string[]) {
@@ -23,7 +24,7 @@ class PostService {
   }
 
   static async getPosts() {
-    const posts = await Post.find();
+    const posts = await Post.find({ where: { author: "Chris" } });
 
     return { data: posts };
   }
