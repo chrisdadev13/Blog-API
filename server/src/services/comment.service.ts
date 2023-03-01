@@ -21,6 +21,9 @@ class CommentService {
   }
 
   static async get(postId: string) {
+    const post = await Post.findOne({ where: { id: postId } });
+    if (!post) throw new BadRequest("Bad request, the post id is invalid");
+
     const comments = await Comment.find({ relations: ["post"] });
     const postComments = comments.filter(
       (comment) => comment.post.id === postId

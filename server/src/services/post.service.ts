@@ -14,6 +14,19 @@ class PostService {
 
     return { data: post };
   }
+
+  static async getPost(postId: string) {
+    const post = await Post.findOne({ where: { id: postId } });
+    if (!post) throw new BadRequest("Bad request the id is not valid");
+
+    return { data: post };
+  }
+
+  static async getPosts() {
+    const posts = await Post.find();
+
+    return { data: posts };
+  }
 }
 
 export default PostService;
