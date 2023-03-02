@@ -21,10 +21,12 @@ class AdminController {
 
       res.cookie("accessToken", access, {
         maxAge: ACCESS_EXPIRES,
+        ...{ httpOnly: true },
       });
 
       res.cookie("refreshToken", refresh, {
         maxAge: REFRESH_EXPIRES,
+        ...{ httpOnly: true },
       });
 
       res.json(admin);
