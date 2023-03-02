@@ -20,3 +20,15 @@ export class BadRequest extends HttpError {
     super(400, message);
   }
 }
+
+export class NotFound extends HttpError {
+  constructor(message: string) {
+    super(404, message);
+  }
+}
+
+export class Unauthorized extends HttpError {
+  constructor(message: string) {
+    super(401, message);
+  }
+}

@@ -10,4 +10,9 @@ export const DB = {
   PASS: process.env.DB_PASS,
 };
 
+export const TOKEN_KEY = process.env.TOKEN_KEY;
+
 export const PORT = 8000;
+
+export const ACCESS_EXPIRES = 60 * 15;
+export const REFRESH_EXPIRES = 60 * 60 * 24 * 7;
