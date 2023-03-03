@@ -16,6 +16,33 @@ class PostService {
     return { data: post };
   }
 
+  static async edit(
+    title: string,
+    content: string,
+    tags: string[],
+    postId: string
+  ) {
+    const post = await Post.findOne({ where: { id: postId } });
+    if (!post) throw new BadRequest("Post doesnt exist");
+
+    post.title = title;
+    post.content = content;
+    post.tags = tags;
+
+    await post.save();
+
+    return { data: post };
+  }
+
+  static async delete(postId: string) {
+    const post = await Post.findOne({ where: { id: postId } });
+    if (!post) throw new BadRequest("Post doesnt exist");
+
+    await post.remove();
+
+    return { data: post };
+  }
+
   static async getPost(postId: string) {
     const post = await Post.findOne({ where: { id: postId } });
     if (!post) throw new BadRequest("Bad request the id is not valid");
