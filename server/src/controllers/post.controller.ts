@@ -10,6 +10,22 @@ class PostController {
     res.json(post);
   }
 
+  static async edit(req: Req, res: Res) {
+    const { title, content, tags, postId } = req.body;
+
+    const post = await PostService.edit(title, content, tags, postId);
+
+    res.json(post);
+  }
+
+  static async delete(req: Req, res: Res) {
+    const { postId } = req.body;
+
+    const post = await PostService.delete(postId);
+
+    res.json(post);
+  }
+
   static async getPost(req: Req, res: Res) {
     const { postId } = req.params;
 
