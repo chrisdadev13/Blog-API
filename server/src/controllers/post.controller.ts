@@ -4,10 +4,12 @@ import PostService from "../services/post.service";
 class PostController {
   static async create(req: Req, res: Res) {
     const { title, content, tags } = req.body;
-
-    const post = await PostService.create(title, content, tags);
-
-    res.json(post);
+    try {
+      const post = await PostService.create(title, content, tags);
+      res.json(post);
+    } catch (err) {
+      res.status(400).json(err);
+    }
   }
 
   static async edit(req: Req, res: Res) {
@@ -19,7 +21,7 @@ class PostController {
   }
 
   static async delete(req: Req, res: Res) {
-    const { postId } = req.body;
+    const { postId } = req.params;
 
     const post = await PostService.delete(postId);
 

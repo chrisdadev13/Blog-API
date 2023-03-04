@@ -11,6 +11,6 @@ postRoutes.get("/posts", PostController.getPosts);
 
 postRoutes.patch("/edit", authToken, PostController.edit);
 
-postRoutes.delete("/delete", authToken, PostController.delete);
+postRoutes.delete("/delete/:postId", authToken, PostController.delete);
 
 export default postRoutes;

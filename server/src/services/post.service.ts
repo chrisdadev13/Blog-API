@@ -1,6 +1,7 @@
 import Post from "../entities/post.entity";
 import { BadRequest } from "../utils/errors";
 import { getRepository } from "typeorm";
+import Comment from "../entities/comment.entity";
 
 class PostService {
   static async create(title: string, content: string, tags: string[]) {
@@ -38,6 +39,11 @@ class PostService {
     const post = await Post.findOne({ where: { id: postId } });
     if (!post) throw new BadRequest("Post doesnt exist");
 
+    const comments = await Comment.find({ relations: ["post"] });
+
+    comments.forEach(async (comment) => {
+      await comment.remove();
+    });
     await post.remove();
 
     return { data: post };
